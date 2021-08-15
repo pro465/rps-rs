@@ -1,7 +1,7 @@
 # rps-rs
 [![Rust](https://github.com/pro465/rps-rs/actions/workflows/rust.yml/badge.svg)](https://github.com/pro465/rps-rs/actions/workflows/rust.yml)
 
-example that uses [nn-rs](../nn-rs) to try to beat the player
+example that uses [nn-rs](https://github.com/pro465/nn-rs) to try to beat the player
 
 # How does this work?
 this basically contains two parts:
