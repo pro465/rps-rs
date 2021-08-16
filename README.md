@@ -5,8 +5,8 @@ example that uses [nn-rs](https://github.com/pro465/nn-rs) to try to beat the pl
 
 # How does this work?
 this basically contains two parts:
-    * an nn-based behaviour-learning system
-    * an system that uses the first system to choose its moves
+   * an nn-based behaviour-learning system
+   * an system that uses the first system to choose its moves
 
 the first system learns to behave like the player.
 and the second system will choose a winning move agaiinst the first system's next move.
