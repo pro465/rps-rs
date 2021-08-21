@@ -37,7 +37,7 @@ impl<const N: usize> AI<N> {
 
         if self.dataset.len() == 50 {
             self.dataset.swap_remove(self.idx);
-            self.idx = (self.idx + 1) % 50;
+            self.idx += 1
         }
 
         self.dataset.push((inp, e_out));

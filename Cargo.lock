@@ -12,4 +12,4 @@ dependencies = [
 [[package]]
 name = "nn"
 version = "0.1.0"
-source = "git+https://github.com/pro465/nn-rs.git#2a3d0cf26c826641eab44ea74025805e4406b6f4"
+source = "git+https://github.com/pro465/nn-rs.git#b0bbf1ec43057fd2429d3e52ded61c601b6b4184"

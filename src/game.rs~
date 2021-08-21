@@ -4,7 +4,6 @@ use crate::object::Object;
 use std::convert::TryInto;
 
 pub fn winner(ai: Object, player: Object) -> GameRes {
-    println!();
     match (player, ai) {
         (Object::Paper, Object::Rock) => {
             println!("ai got covered by you");
