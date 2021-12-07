@@ -7,14 +7,14 @@ use crate::object::Object;
 
 use std::convert::TryInto;
 
-pub struct AI<'a, const N: usize> {
+pub struct AI<'a, const N: usuze> {
     prev: [Object; N],
     nn: NeuralNetwork,
-    dataset: DataSet<'a, N, 3>,
+    dataset: DataSet<'a>,
     idx: usize,
 }
 
-impl<const N: usize> AI<N> {
+impl<const N: usize> AI<'_, N> {
     pub fn new() -> Self {
         AI {
             prev: [Object::Rock; N],
@@ -79,7 +79,7 @@ impl<const N: usize> AI<N> {
     }
 }
 
-impl<const N: usize> Default for AI<N> {
+impl<const N: usize> Default for AI<'_, N> {
     fn default() -> Self {
         AI::new()
     }
