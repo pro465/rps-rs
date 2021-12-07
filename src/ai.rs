@@ -7,7 +7,7 @@ use crate::object::Object;
 
 use std::convert::TryInto;
 
-pub struct AI<'a, const N: usuze> {
+pub struct AI<'a, const N: usize> {
     prev: [Object; N],
     nn: NeuralNetwork,
     dataset: DataSet<'a>,
