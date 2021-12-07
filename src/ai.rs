@@ -41,7 +41,7 @@ impl<const N: usize> AI<'_, N> {
             self.idx = (self.idx + 1) % 50;
         }
 
-        self.dataset.push((&inp, e_out));
+        self.dataset.push((&inp, &e_out));
 
         for i in 0..N - 1 {
             self.prev[i] = self.prev[i + 1];
