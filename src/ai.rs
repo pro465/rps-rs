@@ -1,5 +1,6 @@
 use nn::dataset::*;
 use nn::nn::NeuralNetwork;
+use nn::defaults::DefaultRng as Rng;
 
 use crate::game;
 use crate::object::Object;
@@ -17,7 +18,7 @@ impl<const N: usize> AI<N> {
     pub fn new() -> Self {
         AI {
             prev: [Object::Rock; N],
-            nn: NeuralNetwork::new(&[N, 16, 16, 3]),
+            nn: NeuralNetwork::new(&[N, 16, 16, 3], &mut Rng::new()),
             dataset: DataSet::new(),
             idx: 0,
         }
