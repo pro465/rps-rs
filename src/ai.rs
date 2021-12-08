@@ -1,20 +1,20 @@
 use nn::dataset::*;
-use nn::nn::NeuralNetwork;
 use nn::defaults::DefaultRng as Rng;
+use nn::nn::NeuralNetwork;
 
 use crate::game;
 use crate::object::Object;
 
 use std::convert::TryInto;
 
-pub struct AI<'a, const N: usize> {
+pub struct AI<const N: usize> {
     prev: [Object; N],
     nn: NeuralNetwork,
-    dataset: DataSet<'a>,
+    dataset: DataSet,
     idx: usize,
 }
 
-impl<const N: usize> AI<'_, N> {
+impl<const N: usize> AI<N> {
     pub fn new() -> Self {
         AI {
             prev: [Object::Rock; N],
@@ -25,11 +25,11 @@ impl<const N: usize> AI<'_, N> {
     }
 
     pub fn update(&mut self, curr: Object) {
-        let mut e_out = [0.; 3];
+        let mut e_out = vec![0.; 3];
 
         e_out[curr as usize] = 1.;
 
-        let mut inp = [0.; N];
+        let mut inp = vec![0.; N];
 
         self.prev
             .iter()
@@ -41,7 +41,7 @@ impl<const N: usize> AI<'_, N> {
             self.idx = (self.idx + 1) % 50;
         }
 
-        self.dataset.push((&inp, &e_out));
+        self.dataset.push((inp, e_out));
 
         for i in 0..N - 1 {
             self.prev[i] = self.prev[i + 1];
@@ -79,7 +79,7 @@ impl<const N: usize> AI<'_, N> {
     }
 }
 
-impl<const N: usize> Default for AI<'_, N> {
+impl<const N: usize> Default for AI<N> {
     fn default() -> Self {
         AI::new()
     }
