@@ -1,4 +1,5 @@
 use nn::dataset::*;
+use nn::defaults::DefaultRng as Rng;
 use nn::nn::NeuralNetwork;
 
 use crate::game;
@@ -9,7 +10,7 @@ use std::convert::TryInto;
 pub struct AI<const N: usize> {
     prev: [Object; N],
     nn: NeuralNetwork,
-    dataset: DataSet<N, 3>,
+    dataset: DataSet,
     idx: usize,
 }
 
@@ -17,18 +18,18 @@ impl<const N: usize> AI<N> {
     pub fn new() -> Self {
         AI {
             prev: [Object::Rock; N],
-            nn: NeuralNetwork::new(&[N, 16, 16, 3]),
+            nn: NeuralNetwork::new(&[N, 16, 16, 3], &mut Rng::new()),
             dataset: DataSet::new(),
             idx: 0,
         }
     }
 
     pub fn update(&mut self, curr: Object) {
-        let mut e_out = [0.; 3];
+        let mut e_out = vec![0.; 3];
 
         e_out[curr as usize] = 1.;
 
-        let mut inp = [0.; N];
+        let mut inp = vec![0.; N];
 
         self.prev
             .iter()
